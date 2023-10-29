@@ -1,11 +1,12 @@
 const knex = require("../connections/knex");
 
 const novoAluno = async (req, res) => {
-  const { nome, nota1, nota2, professor, sala } = req.body;
+  const { nome, idade, nota1, nota2, professor, sala } = req.body;
 
   try {
     await knex("alunos").insert({
       nome,
+      idade,
       nota1,
       nota2,
       professor,
