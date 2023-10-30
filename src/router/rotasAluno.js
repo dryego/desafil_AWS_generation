@@ -11,6 +11,6 @@ const rotas = express.Router();
 rotas.post("/cadastro", validarEsquemas(esquemaAluno), novoAluno);
 rotas.get("/detalhar/:id", detalharAluno);
 rotas.put("/editar/:id", validarEsquemas(esquemaAluno), editaAluno);
-rotas.delete("/escluir/:id", excluirAluno);
+rotas.delete("/excluir/:id", excluirAluno);
 
 module.exports = rotas;
