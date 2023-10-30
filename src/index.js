@@ -11,6 +11,8 @@ const app = express();
 app.use(express.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
+app.get("/", (res, req) => res.json({ Menssagem: "tudo OK!" }));
+
 app.use("/aluno", rotasAluno);
 
 app.listen(process.env.PORT, console.log("Servidor Inicializado..."));
