@@ -1,0 +1,168 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API para manipulaçao de alunos.",
+    "description": "esta API tem como objetivo manipular dados de alunos.",
+    "termsOfService": "http://localhoste:3000/",
+    "contact": {
+      "email": "dryego.lisboa@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [{ "url": "http://localhoste:3000/", "description": "API teste" }],
+  "tags": [{ "name": "alunos" }],
+  "paths": {
+    "/aluno/cadastro": {
+      "post": {
+        "tag": ["alunos"],
+        "summary": "cadastro de aluno.",
+        "description": "rota responsavel pelo cadastro do aluno.",
+
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/alunos"
+              },
+              "examples": {
+                "alunos": {
+                  "value": {
+                    "nome": "Dryego Barbosa",
+                    "idade": "35",
+                    "nota1": "10",
+                    "nota2": "9,5",
+                    "professor": "Abilio",
+                    "sala": "101"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "aluno cadastrado com sucesso."
+          }
+        }
+      }
+    },
+    "/aluno/detalhar/{id}": {
+      "get": {
+        "tag": ["alunos"],
+        "summary": "buscar de aluno.",
+        "description": "rota responsavel pelo consulta do aluno pe id.",
+
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "busca o aluno pelo ID",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "requisicao bem sucedida"
+          },
+          "400": { "description": "ID invalido" },
+          "404": { "description": "Id nao encontrado" }
+        }
+      }
+    },
+    "/aluno/editar/{id}": {
+      "put": {
+        "tag": ["alunos"],
+        "summary": "atualizar aluno.",
+        "description": "rota responsavel pela atualizacao do cadastro do aluno.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "busca o aluno pelo ID",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/alunos"
+              },
+              "examples": {
+                "alunos": {
+                  "value": {
+                    "nome": "Dryego Barbosa",
+                    "idade": "35",
+                    "nota1": "10",
+                    "nota2": "9,5",
+                    "professor": "Abilio",
+                    "sala": "101"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "aluno atualizado com sucesso."
+        }
+      }
+    },
+    "/aluno/excluir/{id}": {
+      "delete": {
+        "tag": ["alunos"],
+        "summary": "excluir de aluno.",
+        "description": "rota responsavel pelo exclusao do aluno pe id.",
+
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "busca o aluno pelo ID",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "requisicao bem sucedida"
+          },
+          "400": { "description": "ID invalido" },
+          "404": { "description": "Id nao encontrado" }
+        }
+      }
+    }
+  },
+
+  "components": {
+    "schemas": {
+      "alunos": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "idade": {
+            "type": "string"
+          },
+          "nota1": {
+            "type": "string"
+          },
+
+          "nota2": {
+            "type": "string"
+          },
+
+          "professor": {
+            "type": "string"
+          },
+
+          "sala": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
