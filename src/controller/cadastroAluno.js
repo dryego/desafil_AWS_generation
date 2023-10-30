@@ -16,6 +16,7 @@ const novoAluno = async (req, res) => {
       .status(201)
       .json({ mensagem: "Cadastro realizado com sucesso!" });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ menssagem: "Erro interno no servidor." });
   }
 };
