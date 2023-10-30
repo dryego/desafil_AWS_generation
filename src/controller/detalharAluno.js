@@ -4,7 +4,7 @@ const detalharAluno = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const buscarAluno = buscarAlunoID(id);
+    const buscarAluno = await buscarAlunoID(id);
 
     if (buscarAluno === undefined) {
       return res.status(400).json({ messagem: "Aluno não localizado." });
